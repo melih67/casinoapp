@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
+  distDir: 'out',
   images: {
+    unoptimized: true,
     domains: ['avatars.githubusercontent.com', 'lh3.googleusercontent.com', 'github.com'],
   },
   env: {

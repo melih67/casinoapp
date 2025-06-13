@@ -2,23 +2,31 @@ import { create } from 'zustand';
 import { io, Socket } from 'socket.io-client';
 import { SocketEvents } from '@shared/types';
 
+// Define client and server events separately
+type ClientEvents = {
+  'join-game': (gameType: string) => void;
+  'leave-game': (gameType: string) => void;
+  'place-bet': (bet: any) => void;
+  'get-leaderboard': (data: { timeframe: string; limit: number }) => void;
+};
+
+type ServerEvents = {
+  'bet-placed': (bet: any) => void;
+  'bet-result': (bet: any) => void;
+  'game-update': (data: any) => void;
+  'balance-update': (balance: number) => void;
+  'error': (error: string) => void;
+  'leaderboard-update': (data: any[]) => void;
+};
+
 interface SocketState {
   socket: Socket | null;
   isConnected: boolean;
   connect: (token: string) => void;
   disconnect: () => void;
-  emit: <T extends keyof SocketEvents['client']>(
-    event: T,
-    data: SocketEvents['client'][T]
-  ) => void;
-  on: <T extends keyof SocketEvents['server']>(
-    event: T,
-    callback: (data: SocketEvents['server'][T]) => void
-  ) => void;
-  off: <T extends keyof SocketEvents['server']>(
-    event: T,
-    callback?: (data: SocketEvents['server'][T]) => void
-  ) => void;
+  emit: (event: string, data?: any) => void;
+  on: (event: string, callback: (...args: any[]) => void) => void;
+  off: (event: string, callback?: (...args: any[]) => void) => void;
 }
 
 export const useSocketStore = create<SocketState>((set, get) => ({

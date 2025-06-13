@@ -36,7 +36,7 @@ interface UserProfile {
 }
 
 export default function ProfilePage() {
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -151,7 +151,7 @@ export default function ProfilePage() {
   };
 
   const handleLogout = () => {
-    logout();
+    signOut();
     router.push('/games');
   };
 
