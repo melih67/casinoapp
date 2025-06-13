@@ -17,7 +17,7 @@ export const UserSchema = z.object({
 export type User = z.infer<typeof UserSchema>;
 
 // Game Types
-export const GameTypeSchema = z.enum(['dice', 'crash', 'roulette', 'blackjack', 'slots', 'coinflip']);
+export const GameTypeSchema = z.enum(['dice', 'crash', 'roulette', 'blackjack', 'slots', 'coinflip', 'mines', 'plinko']);
 export type GameType = z.infer<typeof GameTypeSchema>;
 
 export const GameStatusSchema = z.enum(['waiting', 'active', 'finished']);

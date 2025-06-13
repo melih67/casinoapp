@@ -45,6 +45,18 @@ export const GAME_CONFIGS: Record<GameType, GameConfig> = {
     houseEdge: 0.05, // 5%
     maxPayout: 10000, // 100x multiplier
   },
+  mines: {
+    minBet: 0.01,
+    maxBet: 1000,
+    houseEdge: 0.01, // 1%
+    maxPayout: 24000, // 240x multiplier (max with 1 mine)
+  },
+  plinko: {
+    minBet: 0.01,
+    maxBet: 1000,
+    houseEdge: 0.01, // 1%
+    maxPayout: 100000, // 1000x multiplier (center slots)
+  },
 } as const;
 
 // User Constants

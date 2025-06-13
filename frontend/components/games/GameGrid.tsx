@@ -77,19 +77,11 @@ function GameCard({
         </div>
       </div>
 
-      {/* Coming Soon Overlay for unavailable games */}
-      {(gameType === 'roulette' || gameType === 'slots') && (
-        <div className="absolute inset-0 bg-black/80 flex items-center justify-center rounded-lg">
-          <div className="text-center">
-            <div className="text-primary font-bold text-lg mb-1">Coming Soon</div>
-            <div className="text-muted-foreground text-sm">Stay tuned!</div>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 
-  if (preview || gameType === 'roulette' || gameType === 'slots') {
+  if (preview) {
     return CardContent;
   }
 
@@ -172,6 +164,38 @@ export function GameGrid({ preview = false, onGameClick }: GameGridProps) {
           <rect x="7" y="14" width="2" height="2" fill="currentColor" />
           <rect x="11" y="14" width="2" height="2" fill="currentColor" />
           <rect x="15" y="14" width="2" height="2" fill="currentColor" />
+        </svg>
+      ),
+    },
+    {
+      type: 'mines' as GameType,
+      title: 'Mines',
+      description: 'Find the gems while avoiding the mines!',
+      icon: (
+        <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path d="M12 4v4M12 16v4M4 12h4M16 12h4M6.34 6.34l2.83 2.83M14.83 14.83l2.83 2.83M6.34 17.66l2.83-2.83M14.83 9.17l2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="12" cy="12" r="2" fill="currentColor" />
+        </svg>
+      ),
+    },
+    {
+      type: 'plinko' as GameType,
+      title: 'Plinko',
+      description: 'Drop the ball and watch it bounce to fortune!',
+      icon: (
+        <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="4" r="2" fill="currentColor" />
+          <circle cx="8" cy="8" r="1" fill="currentColor" />
+          <circle cx="16" cy="8" r="1" fill="currentColor" />
+          <circle cx="6" cy="12" r="1" fill="currentColor" />
+          <circle cx="12" cy="12" r="1" fill="currentColor" />
+          <circle cx="18" cy="12" r="1" fill="currentColor" />
+          <circle cx="4" cy="16" r="1" fill="currentColor" />
+          <circle cx="10" cy="16" r="1" fill="currentColor" />
+          <circle cx="14" cy="16" r="1" fill="currentColor" />
+          <circle cx="20" cy="16" r="1" fill="currentColor" />
+          <rect x="2" y="20" width="20" height="2" fill="currentColor" />
         </svg>
       ),
     },
